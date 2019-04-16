@@ -1,0 +1,18 @@
+# UNITY
+Library/
+Temp/
+obj/
+[Bb]uild/
+[Bb]uilds/
+
+Assets/Scenes/_TRASH/*
+!Assets/Scenes/_TRASH/TRASH_SCENES_HERE.txt
+!Assets/Scenes/_TRASH/TRASH_SCENES_HERE.txt.meta
+Assets/Ignore/
+Assets/Ignore.meta
+
+# CODE
+*.sln
+*.csproj
+.vs/
+.vscode/
