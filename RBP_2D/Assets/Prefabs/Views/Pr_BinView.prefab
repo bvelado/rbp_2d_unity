@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.29803923}
+  m_Color: {r: 0.62352943, g: 0.827451, b: 0.78039217, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 6922015378977736378}
   - component: {fileID: 5636071189468620358}
   - component: {fileID: 6922015378977736379}
+  - component: {fileID: 5276256837860900011}
   m_Layer: 5
   m_Name: Txt_Label
   m_TagString: Untagged
@@ -162,16 +163,16 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Label
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dce3075d1fb9696419d93f0e62887912, type: 2}
-  m_sharedMaterial: {fileID: 21696239534042426, guid: dce3075d1fb9696419d93f0e62887912,
+  m_fontAsset: {fileID: 11400000, guid: 158fbb67ca558a04c8c074716baba57b, type: 2}
+  m_sharedMaterial: {fileID: 21776966024235844, guid: 158fbb67ca558a04c8c074716baba57b,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285550904
+  m_fontColor: {r: 0.21960784, g: 0.31764707, b: 0.4392157, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -197,7 +198,6 @@ MonoBehaviour:
   m_fontSizeMax: 24
   m_fontStyle: 0
   m_textAlignment: 514
-  m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -224,6 +224,7 @@ MonoBehaviour:
   m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
@@ -238,12 +239,9 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
-  m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
   - {fileID: 0}
@@ -256,6 +254,21 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5276256837860900011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6922015378977736377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aa580b30bbd8614b9d87031411692c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stylesheet: {fileID: 11400000, guid: acea26adad4d0db4ab54eaf82aba6ecd, type: 2}
+  _color: 0
+  _font: 0
 --- !u!1 &6922015379878840954
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,8 +367,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rectContainer: {fileID: 6922015379878840957}
   _labelText: {fileID: 6922015378977736379}
+  _backgroundImage: {fileID: 3312309163180897040}
   _rectViewPrefab: {fileID: 6412109781200842917, guid: 2d302b68cb0211c43917c771f657588a,
     type: 3}
+  _stylesheet: {fileID: 11400000, guid: acea26adad4d0db4ab54eaf82aba6ecd, type: 2}
 --- !u!114 &7161082091844026089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,3 +394,5 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0

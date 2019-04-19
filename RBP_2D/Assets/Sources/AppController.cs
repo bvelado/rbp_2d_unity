@@ -77,7 +77,8 @@ public class AppController : MonoBehaviour
 
         _resultsPage.Open(new PackData()
         {
-            Bins = binsData.ToArray()
+            Bins = binsData.ToArray(),
+            Algorithm = _settings.FreeRectChoiceHeuristic
         });
     }
 
