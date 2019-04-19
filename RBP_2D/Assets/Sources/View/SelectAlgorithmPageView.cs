@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SelectAlgorithmPageView : MonoBehaviour
 {
     [Header("References")]
+    [SerializeField] private PageView _pageView;
     [SerializeField] private RectTransform _listContainer;
     [SerializeField] private ToggleGroup _toggleGroup;
 
@@ -34,12 +35,12 @@ public class SelectAlgorithmPageView : MonoBehaviour
 
     private void Display()
     {
-        gameObject.SetActive(true);
+        _pageView.Open();
     }
 
     private void Hide()
     {
-        gameObject.SetActive(false);
+        _pageView.Close();
     }
 
     private void GenerateListItems(MaxRectsBinPack.FreeRectChoiceHeuristic current = (MaxRectsBinPack.FreeRectChoiceHeuristic)1)

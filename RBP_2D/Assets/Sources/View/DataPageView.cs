@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DataPageView : MonoBehaviour
 {
+    [SerializeField] private PageView _pageView;
     [SerializeField] private RectTransform _listContainer;
     [SerializeField] private SizeListItemView _sizeListItemViewPrefab;
 
@@ -34,10 +35,10 @@ public class DataPageView : MonoBehaviour
         }
     }
 
-    public void AddNewItem()
+    public void AddNewItem(Vector2Int size = new Vector2Int())
     {
         var listItem = Instantiate(_sizeListItemViewPrefab, _listContainer);
-        listItem.Initialize(new Vector2Int(), (item) => RemoveItem(item));
+        listItem.Initialize(size, (item) => RemoveItem(item));
 
         _listItems.Add(listItem);
 
@@ -73,11 +74,11 @@ public class DataPageView : MonoBehaviour
 
     private void Display()
     {
-        gameObject.SetActive(true);
+        _pageView.Open();
     }
     private void Hide()
     {
-        gameObject.SetActive(false);
+        _pageView.Close();
     }
 
     private void GenerateList(List<Vector2Int> rects)

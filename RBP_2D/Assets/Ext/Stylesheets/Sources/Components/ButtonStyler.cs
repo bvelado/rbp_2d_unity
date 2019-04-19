@@ -6,6 +6,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class ButtonStyler : AStyler
 {
+
+    [SerializeField] private bool _isOutlineButton = false;
+    public bool IsOutlineButton { get { return _isOutlineButton; } }
     public override void ApplyStyle()
     {
         if (!stylesheet)

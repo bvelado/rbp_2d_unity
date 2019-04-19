@@ -45,7 +45,7 @@ public static class StylesheetEditorFunctions
         {
             if (!buttonStyler.GetComponent<Animator>())
             {
-                var controller = ButtonAnimationGenerator.GenerateAnimations(buttonStyler.Stylesheet);
+                var controller = ButtonAnimationGenerator.GenerateAnimations(buttonStyler.Stylesheet, buttonStyler.IsOutlineButton);
                 var animator = buttonStyler.gameObject.AddComponent<Animator>();
 
                 AnimatorController.SetAnimatorController(animator, controller);
@@ -53,7 +53,7 @@ public static class StylesheetEditorFunctions
             else
             {
                 var animator = buttonStyler.gameObject.GetComponent<Animator>();
-                var controller = ButtonAnimationGenerator.RegenerateAnimations(animator, buttonStyler.Stylesheet);
+                var controller = ButtonAnimationGenerator.RegenerateAnimations(animator, buttonStyler.Stylesheet, buttonStyler.IsOutlineButton);
             }
         }
     }
@@ -64,11 +64,11 @@ public static class StylesheetEditorFunctions
         var animator = styler.GetComponent<Animator>();
         if (animator)
         {
-            controller = ButtonAnimationGenerator.RegenerateAnimations(animator, styler.Stylesheet);
+            controller = ButtonAnimationGenerator.RegenerateAnimations(animator, styler.Stylesheet, styler.IsOutlineButton);
         }
         else
         {
-            controller = ButtonAnimationGenerator.GenerateAnimations(styler.Stylesheet);
+            controller = ButtonAnimationGenerator.GenerateAnimations(styler.Stylesheet, styler.IsOutlineButton);
         }
     }
 

@@ -22,7 +22,7 @@ public class ButtonStylerInspector : Editor
             {
                 if (GUILayout.Button("Generate Animations"))
                 {
-                    var controller = ButtonAnimationGenerator.GenerateAnimations(buttonStyler.Stylesheet);
+                    var controller = ButtonAnimationGenerator.GenerateAnimations(buttonStyler.Stylesheet, buttonStyler.IsOutlineButton);
                     var animator = buttonStyler.gameObject.AddComponent<Animator>();
 
                     AnimatorController.SetAnimatorController(animator, controller);
@@ -33,7 +33,7 @@ public class ButtonStylerInspector : Editor
                 if (GUILayout.Button("Regenerate Animations"))
                 {
                     var animator = buttonStyler.gameObject.GetComponent<Animator>();
-                    var controller = ButtonAnimationGenerator.RegenerateAnimations(animator, buttonStyler.Stylesheet);
+                    var controller = ButtonAnimationGenerator.RegenerateAnimations(animator, buttonStyler.Stylesheet, buttonStyler.IsOutlineButton);
 
                     AnimatorController.SetAnimatorController(animator, controller);
                 }

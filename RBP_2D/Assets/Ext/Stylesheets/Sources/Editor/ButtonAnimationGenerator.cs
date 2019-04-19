@@ -13,7 +13,7 @@ public static class ButtonAnimationGenerator
     const string PRESSED_PARAMETER = "Pressed";
     const string DISABLED_PARAMETER = "Disabled";
 
-    public static AnimatorController RegenerateAnimations(Animator animator, StylesheetAsset stylesheet)
+    public static AnimatorController RegenerateAnimations(Animator animator, StylesheetAsset stylesheet, bool outlineButton)
     {
         var filePath = AssetDatabase.GetAssetPath(animator.runtimeAnimatorController);
         var controller = AssetDatabase.LoadAssetAtPath<AnimatorController>(filePath);
@@ -36,7 +36,7 @@ public static class ButtonAnimationGenerator
         {
             normalState = CreateState(NORMAL_PARAMETER, ref rootStateMachine);
         }
-        normalState.motion = CreateNormalMotion(stylesheet, filePath);
+        normalState.motion = CreateNormalMotion(stylesheet, filePath, outlineButton);
 
         var highlightedState = rootStateMachine.states.Where(x => x.state.name == HIGHLIGHTED_PARAMETER).Select(x => x.state).FirstOrDefault();
         if (!highlightedState)
@@ -50,7 +50,7 @@ public static class ButtonAnimationGenerator
         {
             pressedState = CreateState(PRESSED_PARAMETER, ref rootStateMachine);
         }
-        pressedState.motion = CreatePressedMotion(stylesheet, filePath);
+        pressedState.motion = CreatePressedMotion(stylesheet, filePath, outlineButton);
 
         var selectedState = rootStateMachine.states.Where(x => x.state.name == SELECTED_PARAMETER).Select(x => x.state).FirstOrDefault();
         if (!selectedState)
@@ -69,7 +69,7 @@ public static class ButtonAnimationGenerator
         return controller;
     }
 
-    public static AnimatorController GenerateAnimations(StylesheetAsset stylesheet)
+    public static AnimatorController GenerateAnimations(StylesheetAsset stylesheet, bool outlineButton)
     {
         var filePath = EditorUtility.SaveFilePanelInProject("Animator controller", "Ctrl_NewAnimatorController", "controller", "Message");
 
@@ -89,13 +89,13 @@ public static class ButtonAnimationGenerator
         var rootStateMachine = controller.layers[0].stateMachine;
 
         var normalState = CreateState(NORMAL_PARAMETER, ref rootStateMachine);
-        normalState.motion = CreateNormalMotion(stylesheet, filePath);
+        normalState.motion = CreateNormalMotion(stylesheet, filePath, outlineButton);
 
         var highlightedState = CreateState(HIGHLIGHTED_PARAMETER, ref rootStateMachine);
         highlightedState.motion = CreateHighlightedMotion(stylesheet, filePath);
 
         var pressedState = CreateState(PRESSED_PARAMETER, ref rootStateMachine);
-        pressedState.motion = CreatePressedMotion(stylesheet, filePath);
+        pressedState.motion = CreatePressedMotion(stylesheet, filePath, outlineButton);
 
         var selectedState = CreateState(SELECTED_PARAMETER, ref rootStateMachine);
 
@@ -138,13 +138,13 @@ public static class ButtonAnimationGenerator
         return transition;
     }
 
-    private static AnimationClip CreateNormalMotion(StylesheetAsset stylesheet, string filePath)
+    private static AnimationClip CreateNormalMotion(StylesheetAsset stylesheet, string filePath, bool outlineButton)
     {
         var clip = new AnimationClip();
 
         AddColorAnimationCurves(ref clip, "", typeof(Image), "m_Color", stylesheet.Buttons.BackgroundDarkColor);
-        AddColorAnimationCurves(ref clip, "Txt_Label", typeof(TextMeshProUGUI), "m_fontColor", stylesheet.Buttons.LabelLightColor);
-        AddColorAnimationCurves(ref clip, "Img_Icon", typeof(Image), "m_Color", stylesheet.Buttons.IconLightColor);
+        AddColorAnimationCurves(ref clip, "Txt_Label", typeof(TextMeshProUGUI), "m_fontColor", outlineButton ? stylesheet.Buttons.LabelDarkColor : stylesheet.Buttons.LabelLightColor );
+        AddColorAnimationCurves(ref clip, "Img_Icon", typeof(Image), "m_Color", outlineButton ? stylesheet.Buttons.IconDarkColor : stylesheet.Buttons.IconLightColor);
 
         AssetDatabase.CreateAsset(clip, filePath.Replace("Ctrl_", "").Replace(".controller", "@default.anim"));
 
@@ -164,13 +164,13 @@ public static class ButtonAnimationGenerator
         return clip;
     }
 
-    private static AnimationClip CreatePressedMotion(StylesheetAsset stylesheet, string filePath)
+    private static AnimationClip CreatePressedMotion(StylesheetAsset stylesheet, string filePath, bool outlineButton)
     {
         var clip = new AnimationClip();
 
         AddColorAnimationCurves(ref clip, "", typeof(Image), "m_Color", stylesheet.SecondaryColor);
-        AddColorAnimationCurves(ref clip, "Txt_Label", typeof(TextMeshProUGUI), "m_fontColor", stylesheet.Buttons.LabelLightColor);
-        AddColorAnimationCurves(ref clip, "Img_Icon", typeof(Image), "m_Color", stylesheet.Buttons.LabelLightColor);
+        AddColorAnimationCurves(ref clip, "Txt_Label", typeof(TextMeshProUGUI), "m_fontColor", outlineButton ? stylesheet.MainColor : stylesheet.Buttons.LabelLightColor);
+        AddColorAnimationCurves(ref clip, "Img_Icon", typeof(Image), "m_Color", outlineButton ? stylesheet.MainColor : stylesheet.Buttons.LabelLightColor);
 
         AssetDatabase.CreateAsset(clip, filePath.Replace("Ctrl_", "").Replace(".controller", "@pressed.anim"));
 
