@@ -89,6 +89,9 @@ public class AppController : MonoBehaviour
 
     public void OpenDataPage()
     {
-        _selectDataPage.Open(_settings.Items, (items) => _settings.Items = items);
+        _selectDataPage.Open(_settings, (items, binSize) => {
+            _settings.Items = items;
+            _settings.BinSize = binSize;
+        });
     }
 }

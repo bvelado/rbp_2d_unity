@@ -228,7 +228,7 @@ MonoBehaviour:
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 2
   m_RegexValue: 
-  m_GlobalPointSize: 24
+  m_GlobalPointSize: 20
   m_CharacterLimit: 8
   m_OnEndEdit:
     m_PersistentCalls:
@@ -414,8 +414,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -589,8 +589,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -802,7 +802,7 @@ MonoBehaviour:
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 2
   m_RegexValue: 
-  m_GlobalPointSize: 24
+  m_GlobalPointSize: 20
   m_CharacterLimit: 8
   m_OnEndEdit:
     m_PersistentCalls:
